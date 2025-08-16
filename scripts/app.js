@@ -12,5 +12,5 @@ function init() {
     hello();
 }
 
-
+//New comment
 window.onload = init; // it waits until the html and css finish to run the logic
