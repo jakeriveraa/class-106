@@ -1,14 +1,70 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Class 106</title>
-    <link rel="stylesheet" href="styles/mystlye.css">
-</head>
-<body>
-    <h1>hello this is 106</h1>
+    <link rel="stylesheet" href="./styles/app.css" />
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-LN+7fdVzj6u52u30Kp6M/trliBMCMKTyK833zpbD+pXdCLuTusPj697FH4R/5mcr"
+      crossorigin="anonymous"
+    />
+  </head>
+  <body>
+    <main>
+        <!-- Task List -->
+      <section class="list2" id="list">
+        <button type="button" class="btn btn-primary" id="btnDetails">SHOW/HIDE</button>
+      </section>
 
+      <!-- Form items -->
+      <section id="form">
+        <div class="task-header">Task Manager</div>
+        <div class="task-subheader">form</div>
+        
+        <div class="mt-3">
+          <label class="form-label">Title</label>
+          <input id="txtTitle" type="text" class="form-control" name="title" placeholder="" />
+        </div>
+        
+        <div class="mt-3">
+          <label class="form-label">Description</label>
+          <textarea id="txtDescription" name="description" class="form-control" placeholder=""></textarea>
+        </div>
+        
+        <div class="mt-3">
+          <label class="form-label">Color</label>
+          <input type="color" class="form-control" id="selColor" value="#000000" />
+        </div>
+        
+        <div class="mt-3">
+          <label class="form-label">Start Date</label>
+          <input type="datetime-local" class="form-control" id="selStartDate" />
+        </div>
+        
+        <div class="mt-3">
+          <label class="form-label">Status</label>
+          <select class="form-control" id="selStatus">
+            <option>New</option>
+            <option>In progress</option>
+            <option>Complete</option>
+            <option>Cancel</option>
+          </select>
+        </div>
+        
+        <div class="mt-3">
+          <label class="form-label">Budget</label>
+          <input type="number" class="form-control" id="numBudget" />
+        </div>
+        
+        <div class="mt-3">  
+            <button type="button" class="btn btn-dark" id="btnAdd">ADD TASK</button>
+        </div>
+      </section>
+    </main>
+    <script src="https://code.jquery.com/jquery-3.7.1.js" integrity="sha256-eKhayi8LEQwp4NKxN+CfCh+3qOVUtJn3QNZ0TciWLP4=" crossorigin="anonymous"></script>
     <script src="./scripts/app.js"></script>
-</body>
+  </body>
 </html>
