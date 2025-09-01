@@ -8,17 +8,19 @@
     <link
       href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/css/bootstrap.min.css"
       rel="stylesheet"
-      integrity="sha384-LN+7fdVzj6u52u30Kp6M/trliBMCMKTyK833zpbD+pXdCLuTusPj697FH4R/5mcr"
       crossorigin="anonymous"
     />
     <!-- Font Awesome for icons -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
+    />
   </head>
   <body>
     <header>
       <h1><i class="fas fa-tasks"></i> Task Manager Pro</h1>
     </header>
-    
+
     <main>
       <!-- Task List Section -->
       <section class="list2" id="list">
@@ -26,11 +28,9 @@
           <button type="button" class="btn btn-primary" id="btnDetails">
             <i class="fas fa-eye"></i> HIDE FORM
           </button>
-          <div class="task-counter">
-            <span id="taskCount">0</span> tasks
-          </div>
+          <div class="task-counter"><span id="taskCount">0</span> tasks</div>
         </div>
-        
+
         <h2><i class="fas fa-list"></i> Your Tasks</h2>
         <div class="pending-tasks" id="taskList">
           <div class="empty-state" id="emptyState">
@@ -38,6 +38,13 @@
             <h4>No tasks yet</h4>
             <p>Create your first task using the form on the right!</p>
           </div>
+        </div>
+
+        <!-- Delete All Button -->
+        <div class="text-center mt-4">
+          <button id="btnDeleteAll" class="btn btn-danger btn-lg">
+            <i class="fas fa-trash-alt"></i> DELETE ALL TASKS
+          </button>
         </div>
       </section>
 
@@ -48,8 +55,7 @@
         </div>
         <div class="task-subheader">Create and manage your tasks</div>
 
-        <!-- Form validation will insert alerts here -->
-
+        <!-- Title -->
         <div class="mt-3">
           <label class="form-label">
             <i class="fas fa-heading"></i> Title *
@@ -65,6 +71,7 @@
           <div class="form-text">Enter a descriptive title for your task</div>
         </div>
 
+        <!-- Description -->
         <div class="mt-3">
           <label class="form-label">
             <i class="fas fa-align-left"></i> Description *
@@ -77,9 +84,12 @@
             maxlength="200"
             rows="3"
           ></textarea>
-          <div class="form-text">Provide detailed information about the task</div>
+          <div class="form-text">
+            Provide detailed information about the task
+          </div>
         </div>
 
+        <!-- Color -->
         <div class="mt-3">
           <label class="form-label">
             <i class="fas fa-palette"></i> Color Theme
@@ -91,26 +101,24 @@
               id="selColor"
               value="#667eea"
             />
-            <small class="form-text">Choose a color to categorize your task</small>
+            <small class="form-text"
+              >Choose a color to categorize your task</small
+            >
           </div>
         </div>
 
+        <!-- Start Date -->
         <div class="mt-3">
           <label class="form-label">
             <i class="fas fa-calendar-alt"></i> Start Date *
           </label>
-          <input 
-            type="datetime-local" 
-            class="form-control" 
-            id="selStartDate" 
-          />
+          <input type="datetime-local" class="form-control" id="selStartDate" />
           <div class="form-text">Select when you plan to start this task</div>
         </div>
 
+        <!-- Status -->
         <div class="mt-3">
-          <label class="form-label">
-            <i class="fas fa-flag"></i> Status
-          </label>
+          <label class="form-label"> <i class="fas fa-flag"></i> Status </label>
           <select class="form-control" id="selStatus">
             <option value="New">🆕 New</option>
             <option value="In Progress">🔄 In Progress</option>
@@ -121,30 +129,38 @@
           <div class="form-text">Current status of the task</div>
         </div>
 
+        <!-- Budget -->
         <div class="mt-3">
           <label class="form-label">
             <i class="fas fa-dollar-sign"></i> Budget *
           </label>
           <div class="input-group">
             <span class="input-group-text">$</span>
-            <input 
-              type="number" 
-              class="form-control" 
-              id="numBudget" 
-              min="0.01" 
-              max="1000000" 
+            <input
+              type="number"
+              class="form-control"
+              id="numBudget"
+              min="0.01"
+              max="1000000"
               step="0.01"
               placeholder="0.00"
             />
           </div>
-          <div class="form-text">Estimated budget for this task (max $1,000,000)</div>
+          <div class="form-text">
+            Estimated budget for this task (max $1,000,000)
+          </div>
         </div>
 
+        <!-- Buttons -->
         <div class="mt-4">
           <button type="button" class="btn btn-dark" id="btnAdd">
             <i class="fas fa-plus"></i> ADD TASK
           </button>
-          <button type="button" class="btn btn-outline-secondary ms-2" onclick="clearForm()">
+          <button
+            type="button"
+            class="btn btn-outline-secondary ms-2"
+            onclick="clearForm()"
+          >
             <i class="fas fa-eraser"></i> CLEAR
           </button>
         </div>
@@ -174,18 +190,15 @@
       </section>
     </main>
 
-    
     <script
       src="https://code.jquery.com/jquery-3.7.1.js"
-      integrity="sha256-eKhayi8LEQwp4NKxN+CfCh+3qOVUtJn3QNZ0TciWLP4="
       crossorigin="anonymous"
     ></script>
     <script
       src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/js/bootstrap.bundle.min.js"
-      integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
       crossorigin="anonymous"
     ></script>
-    
+
     <script type="module" src="./scripts/api.js"></script>
     <script src="./scripts/task.js"></script>
     <script type="module" src="./scripts/app.js"></script>

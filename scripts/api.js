@@ -1,29 +1,28 @@
-// Fixed API to get connected
+// API Handler with LocalStorage Fallback
 const API = {
   baseURL: "https://reqres.in/api",
-  
-  async getTask() {
-    try {
-      const r = await fetch(`${this.baseURL}/users?page=2`);
-      if (!r.ok) throw new Error(`GET failed: ${r.status}`);
-      const data = await r.json();
+  localKey: "userTasks",
+  userId: "user123", // mock user ID
 
-      return data.data.map((u) => ({
-        title: `${u.first_name} ${u.last_name}`, // Fixed property access
-        description: u.email,
-        color: "#AB2311",
-        startDate: new Date().toISOString().slice(0, 16), // Fixed slice parameters
-        status: "New",
-        budget: Math.floor(Math.random() * 5000) + 1000, // Random budget for demo
-      }));
+  async getTasks() {
+    try {
+      // Load from localStorage
+      const localTasks = JSON.parse(localStorage.getItem(this.localKey)) || [];
+      return localTasks.filter(task => task.userId === this.userId);
     } catch (error) {
-      console.error("Error fetching tasks:", error);
-      throw error;
+      console.error("Error loading tasks:", error);
+      return [];
     }
   },
 
-  async createTask(task) { // Fixed typo in method name
+  async createTask(task) {
     try {
+      // Save locally
+      const currentTasks = JSON.parse(localStorage.getItem(this.localKey)) || [];
+      currentTasks.push(task);
+      localStorage.setItem(this.localKey, JSON.stringify(currentTasks));
+
+      // Simulate sending to server
       const r = await fetch(`${this.baseURL}/users`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
@@ -34,6 +33,17 @@ const API = {
     } catch (error) {
       console.error("Error creating task:", error);
       throw error;
+    }
+  },
+
+  async deleteAllTasks() {
+    try {
+      // Clear localStorage
+      localStorage.removeItem(this.localKey);
+      return true;
+    } catch (error) {
+      console.error("Error deleting tasks:", error);
+      return false;
     }
   },
 };

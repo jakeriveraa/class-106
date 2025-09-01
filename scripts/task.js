@@ -1,5 +1,6 @@
 class Task {
   constructor(important, title, desc, color, startDate, status, budget) {
+    this.userId = "user123"; // mock user ID
     this.important = important;
     this.title = title;
     this.description = desc;
@@ -7,6 +8,6 @@ class Task {
     this.startDate = startDate;
     this.status = status;
     this.budget = budget;
-    this.name = "Sergio"; // You can also assign default properties
+    this.name = "Sergio";
   }
 }
